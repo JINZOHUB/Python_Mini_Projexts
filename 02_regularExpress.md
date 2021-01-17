@@ -70,14 +70,13 @@ re.search(pattern,script).group()
 [0-9] 또는 [a-zA-Z] 등은 무척 자주 사용하는 정규 표현식이다. 이렇게 자주 사용하는 정규식은 별도의 표기법으로 표현할 수 있다. 다음을 기억해 두자.
 
 정규표현식 | 설명
------------- | -------------
+--------- | ----
 \d | 숫자와 매치, [0-9]와 동일한 표현식이다.
 \D | 숫자가 아닌 것과 매치, [^0-9]와 동일한 표현식이다.
 \s | whitespace 문자와 매치, [ \t\n\r\f\v]와 동일한 표현식이다. 맨 앞의 빈 칸은 공백문자(space)를 의미한다.
 \S | whitespace 문자가 아닌 것과 매치, [^ \t\n\r\f\v]와 동일한 표현식이다.
 \w | 문자+숫자(alphanumeric)와 매치, [a-zA-Z0-9_]와 동일한 표현식이다.
 \W | 문자+숫자(alphanumeric)가 아닌 문자와 매치, [^a-zA-Z0-9_]와 동일한 표현식이다.
-
 \\ | 메타 문자가 아닌 일반 문자 열슬래시 (\)와 매치. 메타 문자 앞에 \를 붙이면 일반 문자를 의미합니다. 
 
 ## \\\\ express examples
@@ -175,5 +174,23 @@ for i in re.split(r';',data): #세미콜론으로 전체데이터를 한번 구�
   print(re.split(r':',i))
 
 
+## sub 메서드 - 문자열 바꾸기 
 
+re.sub(찾을패턴, 대체할문자, 찾을 문자열)
+
+```
+sentence = 'I have a lovely dog, really. I am not telling a lie. What a pretty dog! I love this dog.'
+
+re.sub('dog','cat',sentence)
+
+words = 'I am home now. \n\n\nI am with my cat. \n\n'
+print(words)
+
+re.sub(r'\n', '',words)
+'I am home now. I am with my cat.'
+```
+
+## ly로 끝나는 단어 추출하기 
+sentence = 'I have a lovely dog, really. I am not telling a lie.'
+re.findall(r'\w+ly',sentence)
 
