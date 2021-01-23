@@ -277,3 +277,67 @@ set(re.findall(char,script101))
 {'Rachel:', 'Monica:', 'Waitress:', 'Paul:', 'Note:', 'Frannie:', 'Customer:', 'Chandler:', 'Phoebe:', 'Scene:', 'Ross:', 'All:', 'Joey:'}
 
 
+rachel = 'Rachel:'
+rachel = re.sub(':', '',rachel)
+print(rachel)
+'Rachel'
+
+y = set(re.findall(char,script101))
+z = list(y)
+character = []
+for i in z:
+  character += [i[:-1]]
+
+character
+
+['Note', 'Scene', 'Paul', 'Monica', 'Frannie', 'Chandler', 'Joey', 'Waitress', 'Ross', 'Phoebe', 'Rachel', 'Customer', 'All']
+
+character = [x[:-1] for x in list(set(re.findall(r'[A-Z][a-z]+:', script101)))]
+
+['Note', 'Scene', 'Paul', 'Monica', 'Frannie', 'Chandler', 'Joey', 'Waitress', 'Ross', 'Phoebe', 'Rachel', 'Customer', 'All']
+
+ re.findall(r'\([A-Za-z].+[a-z|\.]\)',script101)[:6]
+ ['(The Pilot-The Uncut Version)', '(Note: The previously unseen parts of this episode are shown in blue text.)', '(They all stare, bemused.)', '(mortified)', '(explaining to the others)', '(to Ross)']
+
+  f = open('friends101.txt', 'r')
+  f.read(100)
+  'The One Where Monica Gets a New Roommate (The Pilot-The Uncut Version)\r\nWritten by: Marta Kauffman &'
+  f.seek(0)
+  sentences =f.readlines()    #readlines() 한 줄에 들어간 문장을 하나의 원소로 하는 리스트로 만드는 메소드
+  sentences[:3]
+  ['The One Where Monica Gets a New Roommate (The Pilot-The Uncut Version)\r\n', 'Written by: Marta Kauffman & David Crane\r\n', 'Transcribed by: guineapig\r\n']
+
+for i in sentences[:20]:  #문장 20개를 가져와서 
+  if re.match(r'[A-Z][a-z]+:',i):   #match 문으로 문장 맨앞에서 패턴을 찾습니다. 
+    print(i) #찾으면 그 문장을 출력합니다. 
+
+
+Monica: There's nothing to tell! He's just some guy I work with!
+
+Joey: C'mon, you're going out with the guy! There's gotta be something wrong with him!
+
+Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?
+
+Phoebe: Wait, does he eat chalk?
+
+Phoebe: Just, 'cause, I don't want her to go through what I went through with Carl- oh!
+
+
+lines = [i for i in sentences if re.match(r'[A-Z][a-z]+:',i)]
+lines[:10]
+
+["Monica: There's nothing to tell! He's just some guy I work with!\r\n", "Joey: C'mon, you're going out with the guy! There's gotta be something wrong with him!\r\n", 'Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?\r\n', 'Phoebe: Wait, does he eat chalk?\r\n', "Phoebe: Just, 'cause, I don't want her to go through what I went through with Carl- oh!\r\n", "Monica: Okay, everybody relax. This is not even a date. It's just two people going out to dinner and- not having sex.\r\n", 'Chandler: Sounds like a date to me.\r\n', "Chandler: Alright, so I'm back in high school, I'm standing in the middle of the cafeteria, and I realize I am totally naked.\r\n", 'All: Oh, yeah. Had that dream.\r\n', "Chandler: Then I look down, and I realize there's a phone... there.\r\n"]
+
+would = [i for i in sentences if re.match(r'[A-Z][a-z]+:',i)and re.search('would',i)]   # if 문 조건에 and re.search('would',i)를 추가해 would 객체에 저장합니다. 
+
+would
+["Rachel: Ooh, I was kinda hoping that wouldn't be an issue... [Scene: Monica's Apartment, everyone is there and watching a Spanish Soap on TV and are trying to figure out what is going on.]\r\n", "Chandler: I would have to say that is an 'L'-shaped bracket.\r\n", 'Monica: Why?! Why? Why, why would anybody do something like that?\r\n', 'Rachel: You would be too if you found John and David boots on sale, fifty percent off!\r\n', 'Ross: Oh. Listen, do you think- and try not to let my intense vulnerability become any kind of a factor here- but do you think it would be okay if I asked you out? Sometime? Maybe?\r\n', "Joey: Oh, you wouldn't know a great butt if it came up and bit ya.\r\n"]
+
+
+take = [i for i in sentences if re.match(r'[A-Z][a-z]+:',i) and re.search('take',i)]
+take 
+['Ross: I told mom and dad last night, they seemed to take it pretty well.\r\n', "Paul: Well, ever-ev-... ever since she left me, um, I haven't been able to, uh, perform. (Monica takes a sip of her drink.) ...Sexually.\r\n", 'Joey: I will not take this abuse. (Walks to the door and opens it to leave.)\r\n', "Frannie: Are you kidding? I take credit for Paul. Y'know before me, there was no snap in his turtle for two years.\r\n"]
+
+newf = open('would.txt', 'w')
+ewf.writelines(would)
+newf.close()
